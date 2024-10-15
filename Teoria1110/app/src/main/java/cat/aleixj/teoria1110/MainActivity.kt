@@ -1,4 +1,4 @@
-package com.example.llistesgraelles
+package cat.aleixj.teoria1110
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,25 +11,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.llistesgraelles.dades.RepoFake.CrearCosa
-import com.example.llistesgraelles.model.Cosa
-import com.example.llistesgraelles.parts.miniHoritzontal
-import com.example.llistesgraelles.parts.miniVertical
-import com.example.llistesgraelles.ui.theme.LlistesGraellesTheme
+import cat.aleixj.teoria1110.ui.pantalles.PantallaGraella
+import cat.aleixj.teoria1110.ui.pantalles.PantallaLlistaVertical
+import cat.aleixj.teoria1110.ui.theme.Teoria1110Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            LlistesGraellesTheme {
-                val c: Cosa = CrearCosa(2)
-                miniHoritzontal(c)
-                }
+            Teoria1110Theme {
+                PantallaGraella()
             }
         }
+    }
 }
-
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -42,7 +38,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    LlistesGraellesTheme {
+    Teoria1110Theme {
         Greeting("Android")
     }
 }
