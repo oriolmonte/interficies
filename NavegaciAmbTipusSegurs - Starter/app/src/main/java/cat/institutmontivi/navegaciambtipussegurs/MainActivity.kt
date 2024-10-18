@@ -98,7 +98,7 @@ fun Aplicacio ()
             }
     ) {
         paddingValues ->
-        GrafDeNavegacio(paddingValues)
+        GrafDeNavegacio(navController, paddingValues)
     }   
 }
 

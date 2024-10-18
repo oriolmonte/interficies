@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,10 +17,11 @@ import cat.institutmontivi.navegaciambtipussegurs.ui.pantalles.PantallaPrincipal
 
 @Composable
 fun GrafDeNavegacio (
+    navController:NavHostController,
     paddingValues: PaddingValues = PaddingValues(0.dp)
 )
 {
-    val navController = rememberNavController()
+    val navController = navController
     NavHost(
         navController = navController,
         startDestination = Principal,
