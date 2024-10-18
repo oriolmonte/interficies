@@ -10,4 +10,5 @@ data class Cosa (
             "\n" +
             "Est corporis fugit tenetur voluptas qui est eos soluta. Voluptate animi consequatur non occaecati eaque. Officia qui vitae optio tempora rerum quae. Et quidem inventore excepturi eos neque nihil at.\n" +
             "\n"
+
 )

@@ -64,3 +64,4 @@ fun PantallaGraella(guerrers : List<Guerrer> = repositoryFake.obtenirDadesDelsGu
         }
     }
 }
+()

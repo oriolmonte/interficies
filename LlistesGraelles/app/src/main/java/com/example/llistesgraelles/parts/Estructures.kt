@@ -11,11 +11,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
@@ -44,9 +46,7 @@ fun miniHoritzontal(cosa: Cosa)
 {
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
-        .width(170.dp)
-        .width(65.dp)
-
+        .width(1000.dp)
     )
 
     {
@@ -105,7 +105,7 @@ fun miniVertical(cosa: Cosa)
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
         .width(85.dp)
-        .height(90.dp)
+        .height(150.dp)
 
     )
     {
@@ -119,15 +119,19 @@ fun miniVertical(cosa: Cosa)
                 .crossfade(durationMillis = 2000)
                 .build(),
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(50.dp)
+                    .width(75.dp)
+                    .height(75.dp)
                     .align(Alignment.CenterHorizontally),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 placeholder = painterResource(id=R.drawable.tresor)
             )
-                Column(modifier = Modifier
-                    .align(Alignment.CenterHorizontally))
+            Box(modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .fillMaxSize()
+                )
+            {
+                Column(modifier = Modifier.align(Alignment.BottomCenter))
                 {
                     Text(cosa.nom, color = MaterialTheme.colorScheme.primary, textAlign = Right, fontWeight = FontWeight.Bold,
                         modifier = Modifier
@@ -136,6 +140,8 @@ fun miniVertical(cosa: Cosa)
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
                 }
+
+            }
             }
         }
     }
@@ -152,7 +158,7 @@ fun fullCarta(cosa: Cosa)
     Column (modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
         .fillMaxSize()
-        .padding(top = 50.dp)
+        .padding(top = 50.dp, bottom = 50.dp)
     )
     {
         Row(modifier = Modifier
@@ -167,6 +173,7 @@ fun fullCarta(cosa: Cosa)
                 textAlign = Center,
                 modifier = Modifier.fillMaxWidth()
             )
+
         }
         Row (modifier = Modifier)
         {
@@ -176,13 +183,79 @@ fun fullCarta(cosa: Cosa)
                 .crossfade(durationMillis = 2000)
                 .build(),
                 modifier = Modifier
-                    .width(300.dp)
+                    .fillMaxWidth()
                     .height(300.dp),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 placeholder = painterResource(id=R.drawable.tresor)
             )
         }
+        Box(modifier = Modifier
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .fillMaxSize())
+        {
+            Column()
+            {
+                Box(modifier = Modifier
+                    .padding(10.dp)
+
+                )
+                {
+                    Text(cosa.numero.toString(),
+                        color = MaterialTheme.colorScheme.background,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 150.sp,
+                        textAlign = Center,
+                        modifier = Modifier.fillMaxWidth()
+                            .align(Alignment.Center)
+                    )
+                    Text(cosa.descripcio,
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer)
+
+                }
+
+                Box(modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.primaryContainer))
+                {
+
+                    if(cosa.veritat) {
+                        Text(
+                            "Veritat",
+                            fontSize = 15.sp,
+                            color = Color.Green
+                        )
+                    }
+                    else
+                    {
+                        Text(
+                            "Mentida",
+                            fontSize = 15.sp,
+                            color = Color.Red
+                        )
+                    }
+                }
+                Column (modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.primaryContainer))
+                {
+                    Text(cosa.numero.toString()+"\n")
+                    LinearProgressIndicator(
+                        progress = { cosa.numero.toFloat()/100 },
+                        trackColor = MaterialTheme.colorScheme.background,
+                        modifier = Modifier.fillMaxWidth()
+
+                    )
+                }
+            }
+
+        }
+
+
+
     }
 }
 
