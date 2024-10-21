@@ -12,7 +12,7 @@ object RepoFake
         nom = getRandomString(Random.nextInt(5..8)),
         veritat = Random.nextBoolean(),
         foto = "https://loremflickr.com/320/240/person?lock=$idd"
-    )
+    )   
 
     fun obtenirCoses()=(1..100).toList().map{ CrearCosa(it) }
 
