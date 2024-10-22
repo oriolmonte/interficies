@@ -9,3 +9,7 @@ object CaraOCreu
 object Sorteig
 @Serializable
 object Oracle
+@Serializable
+data class Sortejat (val num: Int)
+@Serializable
+object Resposta
