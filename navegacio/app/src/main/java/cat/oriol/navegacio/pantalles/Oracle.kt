@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 @Preview
 @Composable
 
-fun PantallaOracle(onRespostaClic: () -> Unit )
+fun PantallaOracle(onRespostaClic: (String) -> Unit )
 {
     var text by remember { mutableStateOf("") }
     Column(
@@ -46,7 +46,7 @@ fun PantallaOracle(onRespostaClic: () -> Unit )
             modifier = Modifier.padding(50.dp)
         )
         Button(
-            onClick = {onRespostaClic()},
+            onClick = {onRespostaClic(text)},
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text("Pregunta")

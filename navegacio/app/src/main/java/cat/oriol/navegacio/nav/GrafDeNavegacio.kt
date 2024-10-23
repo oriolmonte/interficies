@@ -71,13 +71,14 @@ fun GrafDeNavegacio(
                 PantallaOracle(
                     onRespostaClic =
                     {
-                        navController.navigate(Resposta)
+                            pregunta: String -> navController.navigate(Resposta(preg=pregunta))
                     }
                 )
             }
             composable<Resposta>
             {
-                PantallaRespostaOracle()
+                backStackEntry -> val str = backStackEntry.toRoute<Resposta>().preg
+                PantallaRespostaOracle(str)
             }
         }
 }

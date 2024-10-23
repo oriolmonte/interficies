@@ -16,15 +16,15 @@ import androidx.compose.ui.unit.sp
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-@Preview
 @Composable
-fun PantallaRespostaOracle() {
+fun PantallaRespostaOracle(pregunta:String) {
     var text by remember { mutableStateOf("") }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
     )
     {
+        Text(pregunta, fontSize = 20.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
         var num = Random.nextInt(0..3)
         when(num) {
             0 -> text = "Si"

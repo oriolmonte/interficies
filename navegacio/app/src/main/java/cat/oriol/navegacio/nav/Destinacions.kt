@@ -12,4 +12,4 @@ object Oracle
 @Serializable
 data class Sortejat (val num: Int)
 @Serializable
-object Resposta
+data class Resposta (val preg: String)
