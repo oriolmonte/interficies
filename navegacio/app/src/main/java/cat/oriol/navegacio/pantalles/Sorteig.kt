@@ -24,7 +24,7 @@ import kotlin.random.Random
 import kotlin.random.nextInt
 
 
-@Preview
+//@Preview
 @Composable
 fun PantallaSorteig(onSorteigClick: (Int)->Unit)
 {
