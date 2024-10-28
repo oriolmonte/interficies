@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.0.21"
+
 }
 
 android {
@@ -52,6 +54,16 @@ dependencies {
     implementation(libs.volley)
     implementation("io.coil-kt.coil3:coil-compose:3.0.0-rc01")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0-rc01")
+    //Pack extès d'icones
+    implementation("androidx.compose.material:material-icons-extended")
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.8.3")
+    //Serialització
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
