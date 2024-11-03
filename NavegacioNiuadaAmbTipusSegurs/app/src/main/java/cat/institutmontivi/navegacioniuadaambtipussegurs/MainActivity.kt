@@ -48,10 +48,8 @@ class MainActivity : ComponentActivity() {
                 App()
             }
         }
-    }
-
+}
     @OptIn(ExperimentalMaterial3Api::class)
-    @Preview
     @Composable
     private fun App() {
         val controladorDeNavegacio = rememberNavController();
@@ -107,8 +105,8 @@ class MainActivity : ComponentActivity() {
                     {   categoria->
                         NavigationBarItem(
                             selected = destinacioActual?.
-                                hierarchy?.any{
-                                    it.hasRoute(categoria.ruta::class)
+                            hierarchy?.any{
+                                it.hasRoute(categoria.ruta::class)
                             } == true,
                             onClick = {
                                 controladorDeNavegacio.navigate(categoria.ruta){
@@ -149,12 +147,13 @@ class MainActivity : ComponentActivity() {
 
         ) { innerPadding ->
             GrafDeNavegacio(
-                controladorDeNavegacio = controladorDeNavegacio,
+                controlDeNavegacio = controladorDeNavegacio,
                 paddingValues = innerPadding
             )
 
 
         }
     }
+
 }
 

@@ -2,6 +2,7 @@ package com.example.llistesgraelles.parts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,11 +43,13 @@ import com.example.llistesgraelles.model.Cosa
 
 
 @Composable
-fun miniHoritzontal(cosa: Cosa)
+fun miniHoritzontal(int: Int, onClick: (Int) -> Unit)
 {
+    val cosa:Cosa = CrearCosa(int)
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
         .width(1000.dp)
+        .clickable(onClick = { onClick(cosa.numero) })
     )
 
     {
@@ -97,16 +100,16 @@ fun miniHoritzontal(cosa: Cosa)
 fun miniHoritzontalPreview()
 {
     val c:Cosa = CrearCosa(2)
-    miniHoritzontal(c);
 }
 @Composable
-fun miniVertical(cosa: Cosa)
+fun miniVertical(int: Int, onClick: (Int) -> Unit = {})
 {
+    val cosa:Cosa = CrearCosa(int)
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
         .width(85.dp)
         .height(150.dp)
-
+        .clickable(onClick = { onClick(cosa.numero) })
     )
     {
         Column (modifier = Modifier
@@ -145,20 +148,14 @@ fun miniVertical(cosa: Cosa)
             }
         }
     }
-@Preview
 @Composable
-fun miniVerticalPreview()
+fun cartaClicable(int: Int, onClick: (Int) -> Unit = {})
 {
-    val c:Cosa = CrearCosa(2)
-    miniVertical(c);
-}
-@Composable
-fun fullCarta(cosa: Cosa)
-{
+    val cosa:Cosa = CrearCosa(int)
     Column (modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
         .fillMaxSize()
-        .padding(top = 50.dp, bottom = 50.dp)
+        .clickable { onClick(int) }
     )
     {
         Row(modifier = Modifier
@@ -201,7 +198,7 @@ fun fullCarta(cosa: Cosa)
 
                 )
                 {
-                    Text(cosa.numero.toString(),
+                    Text(int.toString(),
                         color = MaterialTheme.colorScheme.background,
                         fontWeight = FontWeight.Bold,
                         fontSize = 150.sp,
@@ -257,12 +254,4 @@ fun fullCarta(cosa: Cosa)
 
 
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun fullCartaPreview()
-{
-    val c:Cosa = CrearCosa(2)
-    fullCarta(c)
 }

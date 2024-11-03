@@ -55,14 +55,14 @@ val categoriesDeNavegacio = listOf(
 @Serializable
 object  LlistaA
 @Serializable
-data class  LlistaDetallA (val numero:Int)
+data class  DetallA (val numero:Int)
 @Serializable
 object LlistaB
 @Serializable
-data class  LlistaDetallB (val caracter:String)
+data class  DetallB (val caracter:String)
 @Serializable
 object LlistaC
 @Serializable
-data class  LlistaDetallC (val cadena:String)
+data class  DetallC (val cadena:String)
 
 

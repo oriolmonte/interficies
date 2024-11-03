@@ -28,16 +28,16 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.llistesgraelles.R
 import com.example.llistesgraelles.dades.RepoFake
+import com.example.llistesgraelles.dades.RepoFake.CrearCosa
 import com.example.llistesgraelles.model.Cosa
-import com.example.llistesgraelles.navegacio.Detall
 
 @Composable
-fun Detall(id: Int, cosa: Cosa)
+fun detall(int: Int)
 {
+    val cosa:Cosa = CrearCosa(int)
     Column (modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
         .fillMaxSize()
-        .padding(top = 50.dp, bottom = 50.dp)
     )
     {
         Row(modifier = Modifier
@@ -66,7 +66,7 @@ fun Detall(id: Int, cosa: Cosa)
                     .height(300.dp),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
-                placeholder = painterResource(id= R.drawable.tresor)
+                placeholder = painterResource(id=R.drawable.tresor)
             )
         }
         Box(modifier = Modifier
@@ -80,7 +80,7 @@ fun Detall(id: Int, cosa: Cosa)
 
                 )
                 {
-                    Text(cosa.numero.toString(),
+                    Text(int.toString(),
                         color = MaterialTheme.colorScheme.background,
                         fontWeight = FontWeight.Bold,
                         fontSize = 150.sp,
@@ -132,12 +132,15 @@ fun Detall(id: Int, cosa: Cosa)
             }
 
         }
+
+
+
     }
 }
 @Preview
 @Composable
 fun DetallPreview ()
 {
-    val coses = RepoFake.obtenirCoses()
-    Detall(0, coses[6])
+
+    detall(2)
 }

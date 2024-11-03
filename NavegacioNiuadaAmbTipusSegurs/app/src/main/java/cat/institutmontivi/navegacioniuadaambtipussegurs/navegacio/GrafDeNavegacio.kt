@@ -1,4 +1,6 @@
+
 package cat.institutmontivi.navegacioniuadaambtipussegurs.navegacio
+
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -13,6 +15,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.toRoute
 import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaDetallA
 import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaDetallB
+import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaDetallC
 import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaLlistaA
 import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaLlistaB
 import cat.institutmontivi.navegaciobarrainferior.ui.pantalles.PantallaLlistaC
@@ -21,77 +24,67 @@ import cat.institutmontivi.navegacioniuadaambtipussegurs.dades.FakeDataSource
 
 @Composable
 fun GrafDeNavegacio(
-    controladorDeNavegacio: NavHostController,
+    controlDeNavegacio: NavHostController,
     paddingValues: PaddingValues = PaddingValues(0.dp)
 ) {
-    //MARC ON ES POSEN LES PANTALLES
     NavHost(
-        controladorDeNavegacio,
-        startDestination =  CategoriaA,
-        modifier =  Modifier.padding(paddingValues)
-    )
-    {
-        //3 PANTALLES ON ANAR
-        CategoriaA(controladorDeNavegacio)
-        CategoriaB(controladorDeNavegacio)
-        CategoriaC(controladorDeNavegacio)
+        controlDeNavegacio,
+        startDestination = CategoriaA,
+        modifier = Modifier.padding(paddingValues)
+    ){
+        CategoriaA(controlDeNavegacio)
+        CategoriaB(controlDeNavegacio)
+        CategoriaC(controlDeNavegacio)
     }
 }
 
-fun NavGraphBuilder.CategoriaA(controladorDeNavegacio: NavHostController)
-{
-    navigation<CategoriaA>(startDestination = LlistaA)
-    {
-        composable<LlistaA>{
+
+fun NavGraphBuilder.CategoriaA(controlDeNavegacio: NavHostController) {
+    navigation<CategoriaA>(startDestination = LlistaA){
+        composable<LlistaA> {
             PantallaLlistaA(
-            llista = FakeDataSource.llistaA,
-            onClickElement = {
-                controladorDeNavegacio.navigate((LlistaDetallA(it)))
-            }
+                llista = FakeDataSource.llistaA,
+                onClickElement = {
+                    /*numero -> controlDeNavegacio.navigate(DetallA(numero))*/
+                    controlDeNavegacio.navigate(DetallA(it))
+                }
             )
         }
-        composable<LlistaDetallA> {
-            val argument = it.toRoute<LlistaDetallA>()
+        composable<DetallA> {
+            val argument = it.toRoute<DetallA>()
             PantallaDetallA(argument.numero)
         }
     }
 }
-
-fun NavGraphBuilder.CategoriaB(controladorDeNavegacio: NavHostController)
-{
-    navigation<CategoriaB>(startDestination = LlistaA)
-    {
-        composable<LlistaB>{
+fun NavGraphBuilder.CategoriaB(controlDeNavegacio: NavHostController) {
+    navigation<CategoriaB>(startDestination = LlistaB){
+        composable<LlistaB> {
             PantallaLlistaB(
                 llista = FakeDataSource.llistaB,
-                onClickElement = { caracter ->
-                    controladorDeNavegacio.navigate((LlistaDetallB(caracter)))
-
+                onClickElement = {
+                    controlDeNavegacio.navigate(DetallB(it))
                 }
             )
         }
-        composable<LlistaDetallB> {
-            val argument = it.toRoute<LlistaDetallB>()
+        composable<DetallB> {
+            val argument = it.toRoute<DetallB>()
             PantallaDetallB(argument.caracter)
         }
     }
 }
-
-fun NavGraphBuilder.CategoriaC(controladorDeNavegacio: NavHostController)
-{
-    navigation<CategoriaC>(startDestination = LlistaA)
-    {
-        composable<LlistaC>{
+fun NavGraphBuilder.CategoriaC(controlDeNavegacio: NavHostController) {
+    navigation<CategoriaC>(startDestination = LlistaC){
+        composable<LlistaC> {
             PantallaLlistaC(
                 llista = FakeDataSource.llistaC,
-                onClickElement = { cadena ->
-                    controladorDeNavegacio.navigate(LlistaDetallC(cadena))
+                onClickElement = {
+                    controlDeNavegacio.navigate(DetallC(it))
                 }
             )
         }
-        composable<LlistaDetallC> {
-            val argument = it.toRoute<LlistaDetallC>()
-            PantallaDetallB(argument.cadena)
+        composable<DetallC> {
+            val argument = it.toRoute<DetallC>()
+            PantallaDetallC(argument.cadena)
         }
     }
 }

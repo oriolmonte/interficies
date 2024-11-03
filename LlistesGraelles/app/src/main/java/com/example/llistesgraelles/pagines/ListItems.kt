@@ -2,6 +2,7 @@ package com.example.llistesgraelles.pagines
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -46,7 +47,8 @@ fun ListItems (coses: List<Cosa> = RepoFake.obtenirCoses(), onClickElement: (Int
         items(coses)
         {
             ListItem(
-                modifier = Modifier,
+                modifier = Modifier
+                    .clickable { onClickElement(it.numero) },
                 colors = ListItemDefaults.colors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     headlineColor = MaterialTheme.colorScheme.primary,

@@ -1,11 +1,16 @@
-package com.example.llistesgraelles.navegacio
+
+package cat.institutmontivi.navegacioniuadaambtipussegurs.navegacio
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AreaChart
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.ConfirmationNumber
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Numbers
+import androidx.compose.material.icons.outlined.AreaChart
 import androidx.compose.material.icons.outlined.ConfirmationNumber
+import androidx.compose.material.icons.outlined.Numbers
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NavBackStackEntry
-import com.example.llistesgraelles.model.Cosa
 import kotlinx.serialization.Serializable
 
 //Definicio Categories
@@ -15,44 +20,63 @@ object CategoriaVertical
 object CategoriaList
 @Serializable
 object CategoriaGraella
+@Serializable
+object CategoriaCompleta
+@Serializable
+object CategoriaGrid
 
-
-data class CategoriaNavegacio<T:Any>(
+data class CategoriaDeNavegacio<T:Any>(
     val ruta:T,
-    val titol:String,
     val iconaNoSeleccionada: ImageVector,
     val iconaSeleccionada: ImageVector,
-    )
+    val titol:String
+)
 
 val categoriesDeNavegacio = listOf(
-    CategoriaNavegacio(
+    CategoriaDeNavegacio(
         ruta = CategoriaVertical,
-        titol = "Vertical",
         iconaSeleccionada = Icons.Filled.ConfirmationNumber,
         iconaNoSeleccionada = Icons.Outlined.ConfirmationNumber,
+        titol = "CategoriaVertical"
     ),
-
-    CategoriaNavegacio(
+    CategoriaDeNavegacio(
         ruta = CategoriaList,
-        titol = "List",
-        iconaSeleccionada = Icons.Filled.ConfirmationNumber,
-        iconaNoSeleccionada = Icons.Outlined.ConfirmationNumber,
+        iconaSeleccionada = Icons.Filled.AreaChart,
+        iconaNoSeleccionada = Icons.Outlined.AreaChart,
+        titol = "CategoriaList"
     ),
 
-    CategoriaNavegacio(
+    CategoriaDeNavegacio(
         ruta = CategoriaGraella,
-        titol = "Graella",
-        iconaSeleccionada = Icons.Filled.ConfirmationNumber,
-        iconaNoSeleccionada = Icons.Outlined.ConfirmationNumber,
+        iconaSeleccionada = Icons.Filled.Call,
+        iconaNoSeleccionada = Icons.Outlined.AreaChart,
+        titol = "CategoriaGraella"
+    ),
+    CategoriaDeNavegacio(
+        ruta = CategoriaCompleta,
+        iconaSeleccionada = Icons.Filled.Call,
+        iconaNoSeleccionada = Icons.Outlined.AreaChart,
+        titol = "CategoriaCompleta"
+    ),
+    CategoriaDeNavegacio(
+        ruta = CategoriaGrid,
+        iconaSeleccionada = Icons.Filled.Call,
+        iconaNoSeleccionada = Icons.Outlined.AreaChart,
+        titol = "CategoriaGrid"
     )
 )
 
+
 //Definicio de pantalles
 @Serializable
-object LlistaVertical
+object  LlistaVertical
 @Serializable
-object ListItems
+data class  Detall (val numero:Int)
 @Serializable
-object Graella
+object LlistaList
 @Serializable
-data class Detall(val id: Int)
+object LlistaGraella
+@Serializable
+object LlistaCompleta
+@Serializable
+object  LlistaGrid

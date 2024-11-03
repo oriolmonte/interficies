@@ -31,7 +31,7 @@ fun Graella(coses:List<Cosa> = RepoFake.obtenirCoses(),onClickElement: (Int) -> 
 
             )
             {
-                miniVertical(it)
+                miniVertical(it.id, onClickElement)
             }
             HorizontalDivider(
                 color = MaterialTheme.colorScheme.secondary
