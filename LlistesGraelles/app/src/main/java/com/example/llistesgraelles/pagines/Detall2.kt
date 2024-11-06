@@ -29,20 +29,21 @@ import coil3.request.crossfade
 import com.example.llistesgraelles.R
 import com.example.llistesgraelles.dades.RepoFake
 import com.example.llistesgraelles.dades.RepoFake.CrearCosa
-import com.example.llistesgraelles.dades.coses
+import com.example.llistesgraelles.dades.RepoFake2
+import com.example.llistesgraelles.dades.coses2
 import com.example.llistesgraelles.model.Cosa
 
 @Composable
-fun detall(int: Int)
+fun detall2(int: Int)
 {
-    val cosa = coses[int]
+    val cosa = coses2[int]
     Column (modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
         .fillMaxSize()
     )
     {
         Row(modifier = Modifier
-            .background(MaterialTheme.colorScheme.primary)
+            .background(Color.Green)
             .fillMaxWidth()
         )
         {

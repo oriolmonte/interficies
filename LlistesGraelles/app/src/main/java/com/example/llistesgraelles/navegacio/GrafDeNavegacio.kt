@@ -13,13 +13,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.toRoute
-import com.example.llistesgraelles.dades.RepoFake
+import com.example.llistesgraelles.dades.*
 import com.example.llistesgraelles.pagines.Graella
 import com.example.llistesgraelles.pagines.GraellaFull
 import com.example.llistesgraelles.pagines.ListItems
 import com.example.llistesgraelles.pagines.ListItemsGrid
 import com.example.llistesgraelles.pagines.PantallaLlistaVertical
 import com.example.llistesgraelles.pagines.detall
+import com.example.llistesgraelles.pagines.detall2
+import com.example.llistesgraelles.pagines.detall3
 
 
 @Composable
@@ -45,7 +47,7 @@ fun NavGraphBuilder.CategoriaVertical(controlDeNavegacio: NavHostController) {
     navigation<CategoriaVertical>(startDestination = LlistaVertical){
         composable<LlistaVertical> {
             PantallaLlistaVertical(
-                coses = RepoFake.obtenirCoses(),
+                Coses = RepoFake.obtenirCoses(),
                 onClickElement = {
                     controlDeNavegacio.navigate(Detall(it))
                 }
@@ -53,7 +55,7 @@ fun NavGraphBuilder.CategoriaVertical(controlDeNavegacio: NavHostController) {
         }
         composable<Detall> {
             val argument = it.toRoute<Detall>()
-            detall(argument.numero)
+            detall(argument.id)
         }
     }
 }
@@ -61,7 +63,7 @@ fun NavGraphBuilder.CategoriaList(controlDeNavegacio: NavHostController) {
     navigation<CategoriaList>(startDestination = LlistaList){
         composable<LlistaList> {
             ListItems(
-                coses = RepoFake.obtenirCoses(),
+                Coses = coses,
                 onClickElement = {
                     /*numero -> controlDeNavegacio.navigate(DetallA(numero))*/
                     controlDeNavegacio.navigate(Detall(it))
@@ -70,14 +72,14 @@ fun NavGraphBuilder.CategoriaList(controlDeNavegacio: NavHostController) {
         }
         composable<Detall> {
             val argument = it.toRoute<Detall>()
-            detall(argument.numero)
+            detall(argument.id)
         }
     }
 }fun NavGraphBuilder.CategoriaGraella(controlDeNavegacio: NavHostController) {
     navigation<CategoriaGraella>(startDestination = LlistaGraella){
         composable<LlistaGraella> {
             Graella(
-                coses = RepoFake.obtenirCoses(),
+                Coses = coses,
                 onClickElement = {
                     controlDeNavegacio.navigate(Detall(it))
                 }
@@ -85,7 +87,7 @@ fun NavGraphBuilder.CategoriaList(controlDeNavegacio: NavHostController) {
         }
         composable<Detall> {
             val argument = it.toRoute<Detall>()
-            detall(argument.numero)
+            detall(argument.id)
         }
     }
 }
@@ -93,15 +95,15 @@ fun NavGraphBuilder.CategoriaCompleta(controlDeNavegacio: NavHostController) {
     navigation<CategoriaCompleta>(startDestination = LlistaCompleta) {
         composable<LlistaCompleta> {
             GraellaFull(
-                coses = RepoFake.obtenirCoses(),
+                coses = coses2,
                 onClickElement = {
-                    controlDeNavegacio.navigate(Detall(it))
+                    controlDeNavegacio.navigate(Detall2(it))
                 }
             )
         }
-        composable<Detall> {
-            val argument = it.toRoute<Detall>()
-            detall(argument.numero)
+        composable<Detall2> {
+            val argument = it.toRoute<Detall2>()
+            detall2(argument.id)
         }
     }
 }
@@ -110,15 +112,15 @@ fun NavGraphBuilder.CategoriaGrid(controlDeNavegacio: NavHostController) {
     navigation<CategoriaGrid>(startDestination = LlistaGrid) {
         composable<LlistaGrid> {
             ListItemsGrid(
-                coses = RepoFake.obtenirCoses(),
+                coses = coses3,
                 onClickElement = {
-                    controlDeNavegacio.navigate(Detall(it))
+                    controlDeNavegacio.navigate(Detall3(it))
                 }
             )
         }
-        composable<Detall> {
-            val argument = it.toRoute<Detall>()
-            detall(argument.numero)
+        composable<Detall3> {
+            val argument = it.toRoute<Detall3>()
+            detall3(argument.id)
         }
     }
 }

@@ -39,17 +39,19 @@ import coil3.request.crossfade
 import com.example.llistesgraelles.R
 import com.example.llistesgraelles.dades.RepoFake
 import com.example.llistesgraelles.dades.RepoFake.CrearCosa
+import com.example.llistesgraelles.dades.coses
+import com.example.llistesgraelles.dades.coses2
 import com.example.llistesgraelles.model.Cosa
 
 
 @Composable
 fun miniHoritzontal(int: Int, onClick: (Int) -> Unit)
 {
-    val cosa:Cosa = CrearCosa(int)
+    val cosa = coses[int]
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
         .width(1000.dp)
-        .clickable(onClick = { onClick(cosa.numero) })
+        .clickable(onClick = { onClick(cosa.id) })
     )
 
     {
@@ -104,12 +106,12 @@ fun miniHoritzontalPreview()
 @Composable
 fun miniVertical(int: Int, onClick: (Int) -> Unit = {})
 {
-    val cosa:Cosa = CrearCosa(int)
+    val cosa = coses[int]
     Row (modifier = Modifier
         .background(MaterialTheme.colorScheme.primaryContainer)
         .width(85.dp)
         .height(150.dp)
-        .clickable(onClick = { onClick(cosa.numero) })
+        .clickable(onClick = { onClick(cosa.id) })
     )
     {
         Column (modifier = Modifier
@@ -151,7 +153,7 @@ fun miniVertical(int: Int, onClick: (Int) -> Unit = {})
 @Composable
 fun cartaClicable(int: Int, onClick: (Int) -> Unit = {})
 {
-    val cosa:Cosa = CrearCosa(int)
+    val cosa = coses2[int]
     Column (modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
         .fillMaxSize()
@@ -159,7 +161,7 @@ fun cartaClicable(int: Int, onClick: (Int) -> Unit = {})
     )
     {
         Row(modifier = Modifier
-            .background(MaterialTheme.colorScheme.primary)
+            .background(Color.Green)
             .fillMaxWidth()
         )
         {

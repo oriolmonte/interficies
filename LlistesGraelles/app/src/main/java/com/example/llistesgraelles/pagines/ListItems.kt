@@ -27,12 +27,13 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.llistesgraelles.R
 import com.example.llistesgraelles.dades.RepoFake
+import com.example.llistesgraelles.dades.coses
 import com.example.llistesgraelles.model.Cosa
 
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun ListItems (coses: List<Cosa> = RepoFake.obtenirCoses(), onClickElement: (Int) -> Unit = {})
+fun ListItems (Coses: List<Cosa> = coses, onClickElement: (Int) -> Unit = {})
 {
     LazyColumn (
         modifier = Modifier
@@ -44,11 +45,11 @@ fun ListItems (coses: List<Cosa> = RepoFake.obtenirCoses(), onClickElement: (Int
         stickyHeader {
             Text("Coses", style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.primary)
         }
-        items(coses)
+        items(Coses)
         {
             ListItem(
                 modifier = Modifier
-                    .clickable { onClickElement(it.numero) },
+                    .clickable { onClickElement(it.id) },
                 colors = ListItemDefaults.colors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     headlineColor = MaterialTheme.colorScheme.primary,

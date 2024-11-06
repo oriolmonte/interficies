@@ -18,13 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import com.example.llistesgraelles.dades.RepoFake
+import com.example.llistesgraelles.dades.RepoFake2
+import com.example.llistesgraelles.dades.coses2
 import com.example.llistesgraelles.model.Cosa
 import com.example.llistesgraelles.parts.cartaClicable
 import com.example.llistesgraelles.parts.miniVertical
 
 @Preview
 @Composable
-fun GraellaFull(coses:List<Cosa> = RepoFake.obtenirCoses(),onClickElement: (Int) -> Unit = {})
+fun GraellaFull(coses:List<Cosa> = coses2,onClickElement: (Int) -> Unit = {})
 {
     LazyVerticalGrid (
         columns = GridCells.FixedSize(size = 1000.dp)

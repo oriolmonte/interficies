@@ -9,13 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
@@ -33,26 +27,32 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.llistesgraelles.R
 import com.example.llistesgraelles.dades.RepoFake
+import com.example.llistesgraelles.dades.coses
+import com.example.llistesgraelles.dades.coses3
 import com.example.llistesgraelles.model.Cosa
 
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun ListItemsGrid (coses: List<Cosa> = RepoFake.obtenirCoses(), onClickElement: (Int) -> Unit = {})
+fun ListItemsGrid (coses: List<Cosa> = coses3, onClickElement: (Int) -> Unit = {})
 {
-    LazyVerticalStaggeredGrid (
-        columns = StaggeredGridCells.Adaptive(minSize = 150.dp)
-    )
-    {
+    LazyColumn (
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ){
+
         items(coses)
         {
             ListItem(
                 modifier = Modifier
-                    .clickable { onClickElement(it.numero) },
+                    .clickable { onClickElement(it.id) },
                 colors = ListItemDefaults.colors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    headlineColor = MaterialTheme.colorScheme.primary,
-                    supportingColor = MaterialTheme.colorScheme.secondary,
+                    containerColor = MaterialTheme.colorScheme.tertiary,
+                    headlineColor = MaterialTheme.colorScheme.onTertiary,
+                    supportingColor = MaterialTheme.colorScheme.onTertiary,
                 ),
                 headlineContent = {
                     Text(it.nom)

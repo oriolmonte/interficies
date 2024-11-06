@@ -52,11 +52,7 @@ class MainActivity : ComponentActivity() {
                 TopAppBar(
                     title = {
                         Text(
-                            "Coses - ${
-                                rutaActual?.destination?.route?.substringAfterLast(
-                                    "."
-                                ) ?: "Principal"
-                            }"
+                            "Navegacio Niuada"
                         )
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
