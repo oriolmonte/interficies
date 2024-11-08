@@ -30,12 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cat.institutmontivi.navegacioniuadaambtipussegurs.R
 import cat.institutmontivi.navegacioniuadaambtipussegurs.dades.FakeDataSource
+import cat.institutmontivi.navegacioniuadaambtipussegurs.dades.FakeDataSource.obtenLlistaC
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Cadena
 import cat.institutmontivi.navegacioniuadaambtipussegurs.ui.comu.ElementHoritzontal
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun PantallaLlistaC (llista: List<String> = FakeDataSource.llistaC, onClickElement: (String) -> Unit = {}){
+fun PantallaLlistaC (llista: Cadena = obtenLlistaC(), onClickElement: (Int) -> Unit = {}){
     LazyColumn(){
         stickyHeader { Text (
             text = stringResource(R.string.llista_c),

@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import cat.institutmontivi.navegacioniuadaambtipussegurs.navegacio.GrafDeNavegacio
@@ -95,7 +96,7 @@ class MainActivity : ComponentActivity() {
                             } == true,
                             onClick = {
                                 controladorDeNavegacio.navigate(categoria.ruta) {
-                                    popUpTo(controladorDeNavegacio.graph.startDestinationId)
+                                    popUpTo(controladorDeNavegacio.graph.findStartDestination().id)
                                     {
                                         inclusive = false
                                         saveState = true

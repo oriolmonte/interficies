@@ -1,5 +1,6 @@
 package cat.institutmontivi.navegaciobarrainferior.ui.pantalles
 
+
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,39 +24,35 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import cat.institutmontivi.navegacioniuadaambtipussegurs.R
+import cat.institutmontivi.navegacioniuadaambtipussegurs.dades.obtenLlistaC
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Cadena
+import cat.institutmontivi.navegacioniuadaambtipussegurs.ui.comu.ElementHoritzontal
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun PantallaLlistaB (llista: List<Char> = ('A'..'Z').toList(), onClickElement: (Int) -> Unit = {}){
+fun PantallaLlistaC (
+    llista: List<Cadena> = obtenLlistaC(),
+    onClickElement: (Int) -> Unit = {}){
     LazyColumn(){
         stickyHeader { Text (
-            text = stringResource(R.string.llista_b),
+            text = "Llista C",
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.secondary)
+                .background(MaterialTheme.colorScheme.tertiary)
                 .padding(16.dp),
-            color = MaterialTheme.colorScheme.onSecondary,
+            color = MaterialTheme.colorScheme.onTertiary,
             style = MaterialTheme.typography.displaySmall,
             textAlign = TextAlign.Center)
         }
-        itemsIndexed(llista){index, element ->
-            cat.institutmontivi.navegacioniuadaambtipussegurs.ui.comu.ElementHoritzontal(
-                dada = element.valor,
-                index,
-                onClick = {onClickElement(element.id)}
-            )
-            Spacer(
-                modifier = androidx.compose.ui.Modifier.height(
-                    4.dp
-                )
-            )
-
+        itemsIndexed(llista)
+        {index, element ->
+            ElementHoritzontal(dada = element.valor,index,
+                onClick = {onClickElement(element.id)})
+            Spacer(modifier = Modifier.height(4.dp))
         }
     }
 }

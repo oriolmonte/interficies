@@ -1,12 +1,15 @@
 package cat.institutmontivi.navegacioniuadaambtipussegurs.dades
 
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Cadena
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Lletra
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Numero
 import kotlin.random.Random
 
 object FakeDataSource {
 
-    val llistaA: List<Int> = (1..100).toList()
-    val llistaB: List<Char> = ('A'..'Z').toList()
-    val llistaC: List<String>  =  (1..100).toList()
+    private val llistaA: List<Numero> = (1..100).toList().map{Numero(it,it.toString())}
+    private val llistaB: List<Lletra> = (0..26).toList().map{Lletra(it, ('A'+it).toString())}
+    private val llistaC: List<Cadena>  =  (1..100).toList()
         .map {
             val element = StringBuilder()
             val lletres = ('A'..'Z').toList()
@@ -14,7 +17,10 @@ object FakeDataSource {
             {
                 element.append(lletres[Random.nextInt(26)].toString())
             }
-            element.toString()
+            Cadena(it,element.toString())
         }
-
+    fun obtenLlistaA() = llistaA
+    fun obtenLlistaB() = llistaB
+    fun obtenLlistaC() = llistaC
 }
+

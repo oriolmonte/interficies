@@ -23,19 +23,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import cat.institutmontivi.navegacioniuadaambtipussegurs.R
+import cat.institutmontivi.navegacioniuadaambtipussegurs.dades.obtenLlistaB
+import cat.institutmontivi.navegacioniuadaambtipussegurs.model.Lletra
+import cat.institutmontivi.navegacioniuadaambtipussegurs.ui.comu.ElementHoritzontal
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun PantallaLlistaB (llista: List<Char> = ('A'..'Z').toList(), onClickElement: (Int) -> Unit = {}){
+fun PantallaLlistaB (
+    llista: List<Lletra> = obtenLlistaB(),
+    onClickElement: (Int) -> Unit = {}){
     LazyColumn(){
         stickyHeader { Text (
-            text = stringResource(R.string.llista_b),
+            text = "Llista B",
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.secondary)
@@ -45,7 +48,7 @@ fun PantallaLlistaB (llista: List<Char> = ('A'..'Z').toList(), onClickElement: (
             textAlign = TextAlign.Center)
         }
         itemsIndexed(llista){index, element ->
-            cat.institutmontivi.navegacioniuadaambtipussegurs.ui.comu.ElementHoritzontal(
+            ElementHoritzontal(
                 dada = element.valor,
                 index,
                 onClick = {onClickElement(element.id)}
