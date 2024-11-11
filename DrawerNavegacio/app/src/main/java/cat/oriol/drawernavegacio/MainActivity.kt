@@ -31,7 +31,6 @@ class MainActivity : ComponentActivity() {
             DrawerNavegacioTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -41,24 +40,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val a = RepoFake.obtenLlistaA()
-    LazyColumn(
-    ) {
-        itemsIndexed(a)
-        {
-            index, element ->
-                Text(a.toString())
-
-       }
-
-
-        }
-
-@Preview(showBackground = true)
+fun Greeting(modifier: Modifier = Modifier) {
+    val a = RepoFake.obtenLlistaPirates()
+}
+@Preview
 @Composable
-fun GreetingPreview() {
-    DrawerNavegacioTheme {
-        Greeting("Android")
-    }
+fun GreetingPreview()
+{
+    Greeting(modifier = Modifier)
 }
