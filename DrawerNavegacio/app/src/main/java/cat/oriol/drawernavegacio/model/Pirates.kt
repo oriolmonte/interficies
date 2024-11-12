@@ -4,6 +4,6 @@ data class Pirates (
     val id: Int,
     val nom: String,
     val poder: String,
-    val Recompensa: Int,
+    val recompensa: Int,
     val foto:String,
 )
