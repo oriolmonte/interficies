@@ -32,67 +32,67 @@ import coil.compose.AsyncImage
 
 @Preview
 @Composable
-fun miniVertical(index: Int, onClick: (Int) -> Unit = {})
+fun miniPirates(index: Int, onClick: (Int) -> Unit = {})
 {
     val pirata = obteneElementLlistaPirates(index)
-        Box(
-            modifier = Modifier
-                .width(85.dp)
-                .height(150.dp)
-                .clickable(onClick = { onClick(pirata.id) })
+    Box(
+        modifier = Modifier
+            .width(85.dp)
+            .height(150.dp)
+            .clickable(onClick = { onClick(pirata.id) })
+    )
+    {
+        Image(painter = painterResource(R.drawable.bgpirates),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize(),
         )
-        {
-            Image(painter = painterResource(R.drawable.bgpirates),
-                contentDescription = "",
+        Column(
+            modifier = Modifier
+                .padding(5.dp)
+                .fillMaxSize()
+        ) {
+            AsyncImage(
+                model = pirata.foto,
+                contentDescription = null,
+                placeholder = painterResource(R.drawable.ic_launcher_foreground),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.matchParentSize(),
-            )
-            Column(
                 modifier = Modifier
-                    .padding(5.dp)
-                    .fillMaxSize()
-            ) {
-                AsyncImage(
-                    model = pirata.foto,
-                    contentDescription = null,
-                    placeholder = painterResource(R.drawable.ic_launcher_foreground),
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .aspectRatio(1f)
-                        .weight(1f)
-                )
+                    .aspectRatio(1f)
+                    .weight(1f)
+            )
 
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+            )
+            {
+                Column(modifier = Modifier.align(Alignment.BottomCenter))
                 {
-                    Column(modifier = Modifier.align(Alignment.BottomCenter))
-                    {
-                        Text(
-                            pirata.nom,
-                            color = Color(0XFF4d2200),
-                            textAlign = Center,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier
-                                .align(
-                                    Alignment.CenterHorizontally
-                                )
-                        )
-                        Text(
-                            pirata.recompensa.toString(),
-                            color = Color(0XFF4d2200),
-                            textAlign = Center,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier
-                                .align(
-                                    Alignment.CenterHorizontally
-                                )
-                        )
-                    }
-
+                    Text(
+                        pirata.nom,
+                        color = Color(0XFF4d2200),
+                        textAlign = Center,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .align(
+                                Alignment.CenterHorizontally
+                            )
+                    )
+                    Text(
+                        pirata.recompensa.toString()+"$",
+                        color = Color(0XFF4d2200),
+                        textAlign = Center,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .align(
+                                Alignment.CenterHorizontally
+                            )
+                    )
                 }
+
             }
         }
     }
+}
 

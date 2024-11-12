@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,8 +46,6 @@ fun PantallaLlistaFF (
             modifier = Modifier.matchParentSize()
 
         )
-
-
         LazyColumn(
             Modifier
                 .fillMaxWidth()
@@ -60,13 +59,14 @@ fun PantallaLlistaFF (
                         .fillMaxWidth()
                         .background(Color(0xFF0e1630))
                         .padding(16.dp),
-                    color = MaterialTheme.colorScheme.onPrimary,
+                    color = Color.White,
                     style = MaterialTheme.typography.displaySmall,
                     textAlign = TextAlign.Center
                 )
             }
             itemsIndexed(llista)
             { index, _ ->
+
                 ElementHoritzontalFF(index, onClick = { onClickElement(index) })
                 Spacer(modifier = Modifier.height(4.dp))
             }

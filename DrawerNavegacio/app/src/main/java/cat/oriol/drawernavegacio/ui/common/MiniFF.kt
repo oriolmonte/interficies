@@ -60,7 +60,7 @@ fun ElementHoritzontalFF (id: Int, onClick:(Int) -> Unit = {})
             text = ffelement.nom,
             style = MaterialTheme.typography.displaySmall,
             fontSize = 28.sp,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = Color.White,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .weight(3f)
@@ -70,14 +70,20 @@ fun ElementHoritzontalFF (id: Int, onClick:(Int) -> Unit = {})
         val imageid = context.resources.getIdentifier(ffelement.job.lowercase().replace(" ","")
             ,"drawable",
             context.packageName)
-        Image(
-            painter = painterResource(id=imageid),
-            contentDescription=null,
-            modifier = Modifier
-                .aspectRatio(1f)
-                .height(150.dp)
-                .weight(1f)
-        )
+        if(imageid!=0) {
+            Image(
+                painter = painterResource(id = imageid),
+                contentDescription = null,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .height(150.dp)
+                    .weight(1f)
+            )
+        }
+        else{
+            //TODO ADD BLUE MAGE
+            Text("")
+        }
     }
 }
 

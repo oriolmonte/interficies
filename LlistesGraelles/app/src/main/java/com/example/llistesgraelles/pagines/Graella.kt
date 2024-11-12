@@ -1,7 +1,9 @@
 package com.example.llistesgraelles.pagines
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
@@ -21,7 +23,9 @@ import com.example.llistesgraelles.parts.miniVertical
 fun Graella(Coses:List<Cosa> = coses, onClickElement: (Int) -> Unit = {})
 {
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(minSize = 90.dp)
+        columns = StaggeredGridCells.Fixed(4),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+
     )
     {
         items(Coses)

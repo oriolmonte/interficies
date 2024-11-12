@@ -1,18 +1,8 @@
 package cat.oriol.drawernavegacio.dades
 
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import cat.oriol.drawernavegacio.R
 import cat.oriol.drawernavegacio.model.Gent
 import cat.oriol.drawernavegacio.model.Pirates
 import cat.oriol.drawernavegacio.model.Pokemon
-import coil.compose.AsyncImage
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
 import kotlin.random.Random
@@ -22,35 +12,37 @@ object RepoFake{
 
     val configuracio = fakerConfig { locale = "en-US" }
     val faker = Faker(configuracio)
-    private val llistaGent: List<Gent> = (1..50).toList().map{
+    private val llistaGent: List<Gent> = (0..50).toList().map{
         Gent(
             it,
             faker.finalFantasyXIV.characters(),
             faker.finalFantasyXIV.jobs(),
             faker.finalFantasyXIV.zones(),
-            "https://loremflickr.com/320/240/ff14"
+            "https://loremflickr.com/320/320/ff14?lock=$it"
             )
     }
-    private val llistaPirates: List<Pirates> = (1..50).toList().map{
+    private val llistaPirates: List<Pirates> = (0..50).toList().map{
+        val char = faker.onePiece.characters()
         Pirates(
             it,
-            faker.onePiece.characters(),
+            char,
             faker.onePiece.akumaNoMi(),
             Random.nextInt(10000..5000000),
-            "https://loremflickr.com/320/240/one_piece"
+            "https://loremflickr.com/320/320/${char.lowercase().replace(" ","_")}"
         )
     }
-    private val llistaPokemon:List<Pokemon> = (1..150).toList().map{
+    private val llistaPokemon:List<Pokemon> = (0..150).toList().map{
+        val char = faker.pokemon.names()
         Pokemon(
             it,
-            faker.pokemon.names(),
+            char,
             Random.nextInt(10..255),
             Random.nextInt(10..255),
             faker.pokemon.moves(),
             faker.pokemon.moves(),
             faker.pokemon.moves(),
             faker.pokemon.moves(),
-            "https://loremflickr.com/320/240/pokemon"
+            "https://loremflickr.com/320/240/${char.lowercase().replace(" ","_")}"
         )
     }
     fun obtenLlistaGent() = llistaGent

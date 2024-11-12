@@ -21,6 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cat.oriol.drawernavegacio.dades.RepoFake
+import cat.oriol.drawernavegacio.navegacio.DetallFF
+import cat.oriol.drawernavegacio.ui.pantalles.PantallaLlistaFF
+import cat.oriol.drawernavegacio.ui.pantalles.detallFF
+import cat.oriol.drawernavegacio.ui.pantalles.detallPirates
 import cat.oriol.drawernavegacio.ui.theme.DrawerNavegacioTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,23 +33,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DrawerNavegacioTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                detallPirates(14)
             }
         }
     }
-}
-
-@Composable
-fun Greeting(modifier: Modifier = Modifier) {
-    val a = RepoFake.obtenLlistaPirates()
-}
-@Preview
-@Composable
-fun GreetingPreview()
-{
-    Greeting(modifier = Modifier)
 }
