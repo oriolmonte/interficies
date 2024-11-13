@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import cat.oriol.drawernavegacio.R
 import cat.oriol.drawernavegacio.dades.RepoFake.obtenElementLlistaGent
 import coil.compose.AsyncImage
+import coil.size.Size
 
 @Preview
 @Composable
@@ -119,7 +120,8 @@ fun detallFF(index: Int) {
                         painter = painterResource(id = imageid),
                         contentDescription = null,
                         modifier = Modifier
-                            .aspectRatio(0.4f)
+                            .aspectRatio(1f)
+                            .height(50.dp)
 
                     )
                 }
@@ -129,9 +131,9 @@ fun detallFF(index: Int) {
                 {
                     Text(
                         ffelement.lloc,
-                        style = MaterialTheme.typography.headlineLarge,
                         color = Color.White,
                         textAlign = TextAlign.Left,
+                        fontSize = 25.sp,
                         modifier = Modifier
                             .padding(horizontal = 25.dp, vertical = 10.dp)
                     )

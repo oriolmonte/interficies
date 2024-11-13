@@ -18,7 +18,7 @@ object RepoFake{
             faker.finalFantasyXIV.characters(),
             faker.finalFantasyXIV.jobs(),
             faker.finalFantasyXIV.zones(),
-            "https://loremflickr.com/320/320/ff14?lock=$it"
+            "https://loremflickr.com/320/320/ff14?lock=${Random.nextInt(0..1024)}"
             )
     }
     private val llistaPirates: List<Pirates> = (0..50).toList().map{

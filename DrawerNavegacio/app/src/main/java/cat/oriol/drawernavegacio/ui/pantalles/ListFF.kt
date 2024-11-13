@@ -32,7 +32,7 @@ import cat.oriol.drawernavegacio.ui.common.ElementHoritzontalFF
 @Preview(showSystemUi = true)
 @Composable
 fun PantallaLlistaFF (
-    llista: List<Gent> = obtenLlistaGent(),
+    llista: List<Gent>,
     onClickElement: (Int) -> Unit = {},
 )
 {

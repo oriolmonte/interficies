@@ -30,7 +30,7 @@ import cat.oriol.drawernavegacio.ui.common.miniPirates
 
 @Preview
 @Composable
-fun ListPirates(pirates:List<Pirates> = RepoFake.obtenLlistaPirates(), onClickElement: (Int) -> Unit = {})
+fun ListPirates(pirates:List<Pirates> , onClickElement: (Int) -> Unit = {})
 {
     Column(
         modifier = Modifier.background(Color(0XFF4d2200))
@@ -49,7 +49,7 @@ fun ListPirates(pirates:List<Pirates> = RepoFake.obtenLlistaPirates(), onClickEl
         )
         {
             Text("PIRATES",
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = Color.White,
                 style = MaterialTheme.typography.displaySmall,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()

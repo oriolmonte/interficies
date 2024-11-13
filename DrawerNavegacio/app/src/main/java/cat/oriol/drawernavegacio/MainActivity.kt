@@ -25,6 +25,7 @@ import cat.oriol.drawernavegacio.navegacio.DetallFF
 import cat.oriol.drawernavegacio.ui.pantalles.PantallaLlistaFF
 import cat.oriol.drawernavegacio.ui.pantalles.detallFF
 import cat.oriol.drawernavegacio.ui.pantalles.detallPirates
+import cat.oriol.drawernavegacio.ui.theme.AppDrawer
 import cat.oriol.drawernavegacio.ui.theme.DrawerNavegacioTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DrawerNavegacioTheme {
-                detallPirates(14)
+                AppDrawer()
             }
         }
     }

@@ -74,6 +74,7 @@ fun miniPirates(index: Int, onClick: (Int) -> Unit = {})
                         color = Color(0XFF4d2200),
                         textAlign = Center,
                         fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
                         modifier = Modifier
                             .align(
                                 Alignment.CenterHorizontally
