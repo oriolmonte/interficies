@@ -53,6 +53,7 @@ fun ListPokemon(pokemon:List<Pokemon> = RepoFake.obtenLlistaPokemons(), onClickE
             Text("Pokemon",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.displaySmall,
+
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
 

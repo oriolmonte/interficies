@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cat.oriol.drawernavegacio.R
 import cat.oriol.drawernavegacio.dades.RepoFake.obtenElementLlistaPokemons
 import cat.oriol.drawernavegacio.dades.RepoFake.obteneElementLlistaPirates
@@ -69,6 +70,7 @@ fun miniPokemon(index: Int, onClick:(Int) -> Unit = {})
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         textAlign = Center,
                         fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
                         modifier = Modifier
                             .align(
                                 Alignment.CenterHorizontally
@@ -78,6 +80,7 @@ fun miniPokemon(index: Int, onClick:(Int) -> Unit = {})
                         (pokemon.id+1).toString() ,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         textAlign = Center,
+
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .align(

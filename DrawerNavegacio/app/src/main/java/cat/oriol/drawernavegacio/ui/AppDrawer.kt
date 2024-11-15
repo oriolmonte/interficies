@@ -1,15 +1,11 @@
-package cat.oriol.drawernavegacio.ui.theme
+package cat.oriol.drawernavegacio.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Badge
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
@@ -32,8 +28,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
@@ -175,23 +169,17 @@ private fun Bastida(
                     navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 navigationIcon = {
-                    if (destinacioActual?.hasRoute(CategoriaFinal::class)
-                            ?: true
-                    ) {  // <-- Cal actualitzar aquesta condició a la ruta de la pantalla principal
+                    if (destinacioActual?.hasRoute(CategoriaFinal::class)?: true ) {  // <-- Cal actualitzar aquesta condició a la ruta de la pantalla principal
                         IconButton(
                             onClick = {
                                 ambitCorrutina.launch {
                                     estatDrawer.open()
                                 }
                             }
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Menu,
-                                contentDescription = "Pantalla principal",
-                                tint = MaterialTheme.colorScheme.onPrimary
-                            )
-                        }
-                    } else {
+                        )
+                        {  Icon(imageVector = Icons.Default.Menu,contentDescription = "Pantalla principal",) }
+                    }
+                    else {
                         IconButton(
                             onClick = { controladorDeNavegacio.navigateUp() }
                         ) {

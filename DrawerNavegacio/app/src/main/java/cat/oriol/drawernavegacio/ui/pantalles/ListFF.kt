@@ -29,7 +29,7 @@ import cat.oriol.drawernavegacio.model.Gent
 import cat.oriol.drawernavegacio.ui.common.ElementHoritzontalFF
 
 @OptIn(ExperimentalFoundationApi::class)
-@Preview(showSystemUi = true)
+//@Preview(showSystemUi = true)
 @Composable
 fun PantallaLlistaFF (
     llista: List<Gent>,
@@ -44,7 +44,6 @@ fun PantallaLlistaFF (
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize()
-
         )
         LazyColumn(
             Modifier
