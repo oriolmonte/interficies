@@ -22,18 +22,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cat.oriol.detallscrollable.R
 import cat.oriol.detallscrollable.dades.RepoFake.obtenElementLlistaGent
 import coil.compose.AsyncImage
-
+@Preview
 @Composable
 fun detallFF(index: Int) {
     val ffelement = obtenElementLlistaGent(index)
     Box(
-        modifier = Modifier.fillMaxSize()
-
     )
     {
         Image(
@@ -74,9 +73,9 @@ fun detallFF(index: Int) {
                 placeholder = painterResource(R.drawable.ic_launcher_foreground),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .aspectRatio(1f)
                     .height(300.dp)
                     .weight(1f)
+
             )
         }
         Row()
@@ -115,8 +114,9 @@ fun detallFF(index: Int) {
                         painter = painterResource(id = imageid),
                         contentDescription = null,
                         modifier = Modifier
-                            .aspectRatio(1f)
                             .height(50.dp)
+                            .weight(1f)
+                            .align(Alignment.CenterVertically)
 
                     )
                 }

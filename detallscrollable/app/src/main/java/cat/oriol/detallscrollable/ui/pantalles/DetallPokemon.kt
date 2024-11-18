@@ -32,6 +32,7 @@ import coil.compose.AsyncImage
 import kotlin.random.Random
 import kotlin.random.nextInt
 
+@Preview
 @Composable
 fun detallPokemon(index: Int) {
     val pokemon = obtenElementLlistaPokemons(index)
@@ -42,12 +43,15 @@ fun detallPokemon(index: Int) {
         Color.Magenta,
         Color.DarkGray,
     )
-    Box(modifier=Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
+    Box(modifier=Modifier.background(MaterialTheme.colorScheme.background) )
     {
         Column(
+
         )
         {
             Row(
+                modifier = Modifier.weight(0.3f)
+
             )
             {
                 AsyncImage(
@@ -60,6 +64,7 @@ fun detallPokemon(index: Int) {
                 )
             }
             Row(
+                modifier = Modifier.weight(0.1f)
             )
             {
                 Text(
@@ -72,6 +77,7 @@ fun detallPokemon(index: Int) {
                 )
             }
             Row(
+                modifier = Modifier.weight(0.1f)
             )
             {
                 Text(
@@ -91,7 +97,7 @@ fun detallPokemon(index: Int) {
                     .background(
                         color = colors[Random.nextInt(0..colors.size-1)],
                         shape = RoundedCornerShape(percent=10)
-                    )
+                    ).weight(0.1f)
                 , verticalAlignment = Alignment.CenterVertically
             )
             {
@@ -112,7 +118,7 @@ fun detallPokemon(index: Int) {
                     .background(
                         color = colors[Random.nextInt(0..colors.size-1)],
                         shape = RoundedCornerShape(percent=10)
-                    )
+                    ).weight(0.1f)
                 , verticalAlignment = Alignment.CenterVertically
             )
             {
@@ -133,7 +139,7 @@ fun detallPokemon(index: Int) {
                     .background(
                         color = colors[Random.nextInt(0..colors.size-1)],
                         shape = RoundedCornerShape(percent=10)
-                    )
+                    ).weight(0.1f)
                 , verticalAlignment = Alignment.CenterVertically
             )
             {
@@ -154,7 +160,7 @@ fun detallPokemon(index: Int) {
                     .background(
                         color = colors[Random.nextInt(0..colors.size-1)],
                         shape = RoundedCornerShape(percent=10)
-                    )
+                    ).weight(0.1f)
                 , verticalAlignment = Alignment.CenterVertically
             )
             {

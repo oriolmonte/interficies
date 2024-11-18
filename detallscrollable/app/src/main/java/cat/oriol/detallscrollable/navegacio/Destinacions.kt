@@ -46,10 +46,3 @@ val categoriesDeNavegacio = listOf(
         titol = "Pokemon"
     )
 )
-@Serializable
-data class DetallFF(val id: Int)
-@Serializable
-data class DetallPirates(val id: Int)
-@Serializable
-data class DetallPokemon(val id: Int)
-
