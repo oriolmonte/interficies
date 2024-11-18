@@ -36,6 +36,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import cat.oriol.detallscrollable.dades.RepoFake.obtenLlistaGent
 import cat.oriol.detallscrollable.dades.RepoFake.obtenLlistaPirates
+import cat.oriol.detallscrollable.dades.RepoFake.obtenLlistaPokemons
 import cat.oriol.detallscrollable.navegacio.categoriesDeNavegacio
 import cat.oriol.detallscrollable.ui.pantalles.detallFF
 import cat.oriol.detallscrollable.ui.pantalles.detallPirates
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DetallscrollableTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
+                Scaffold(modifier = Modifier.fillMaxSize()) {paddingValues ->
                     App()
                 }
             }
@@ -141,7 +142,7 @@ fun ContingutPaginadorAmbTabsFF(innerPadding: PaddingValues) {
         .fillMaxSize()
     )
     {
-        ScrollableTabRow(selectedTabIndex = estatPaginador.currentPage, edgePadding = 0.dp) //edgepadding espai que li guarda! nomes al scrollable!!!
+        ScrollableTabRow(selectedTabIndex = estatPaginador.currentPage, edgePadding = 0.dp, modifier = Modifier.padding(horizontal = 8.dp)  ) //edgepadding espai que li guarda! nomes al scrollable!!!
         {
             repeat(listFF.size)
             {
@@ -152,8 +153,9 @@ fun ContingutPaginadorAmbTabsFF(innerPadding: PaddingValues) {
                         estatPaginador.animateScrollToPage(pagina)
                     }
                     },
-                    content = {Text(text= pagina.toString(), style = MaterialTheme.typography.headlineSmall)
-                    }
+                    content = {Text(text= listFF[pagina].nom, style = MaterialTheme.typography.headlineSmall)
+                    },
+                    modifier = Modifier.padding(8.dp)
                 )
             }
         }
@@ -178,7 +180,7 @@ fun ContingutPaginadorAmbTabsPirates(innerPadding: PaddingValues) {
         .fillMaxSize()
     )
     {
-        ScrollableTabRow(selectedTabIndex = estatPaginador.currentPage, edgePadding = 0.dp) //edgepadding espai que li guarda! nomes al scrollable!!!
+        ScrollableTabRow(selectedTabIndex = estatPaginador.currentPage, edgePadding = 0.dp, modifier = Modifier.padding(horizontal = 8.dp)) //edgepadding espai que li guarda! nomes al scrollable!!!
         {
             repeat(listPirates.size)
             {
@@ -189,8 +191,9 @@ fun ContingutPaginadorAmbTabsPirates(innerPadding: PaddingValues) {
                         estatPaginador.animateScrollToPage(pagina)
                     }
                     },
-                    content = {Text(text= pagina.toString(), style = MaterialTheme.typography.headlineSmall)
-                    }
+                    content = {Text(text= listPirates[pagina].nom, style = MaterialTheme.typography.headlineSmall)
+                    },
+                    modifier = Modifier.padding(8.dp)
                 )
             }
         }
@@ -208,7 +211,7 @@ fun ContingutPaginadorAmbTabsPirates(innerPadding: PaddingValues) {
 @Composable
 fun ContingutPaginadorAmbTabsPokemon(innerPadding: PaddingValues) {
     val ambitCorrutina = rememberCoroutineScope()
-    val listPokemon = obtenLlistaGent()
+    val listPokemon = obtenLlistaPokemons()
     val estatPaginador = rememberPagerState { listPokemon.size }
     Column(modifier=Modifier
         .padding(innerPadding)
@@ -226,8 +229,9 @@ fun ContingutPaginadorAmbTabsPokemon(innerPadding: PaddingValues) {
                         estatPaginador.animateScrollToPage(pagina)
                     }
                     },
-                    content = {Text(text= pagina.toString(), style = MaterialTheme.typography.headlineSmall)
-                    }
+                    content = {Text(text= listPokemon[pagina].nom, style = MaterialTheme.typography.headlineSmall)
+                    },
+                    modifier = Modifier.padding(8.dp)
                 )
             }
         }
