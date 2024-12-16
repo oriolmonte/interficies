@@ -157,10 +157,11 @@ fun ContingutPaginadorAmbTabsFF(innerPadding: PaddingValues) {
     }
 }
 @Composable
-fun ContingutPaginadorAmbTabsPirates(innerPadding: PaddingValues) {
+fun ContingutPaginadorAmbTabsPirates(innerPadding: PaddingValues, initialPage: Int = 0)
+ {
     val ambitCorrutina = rememberCoroutineScope()
     val listPirates = obtenLlistaPirates()
-    val estatPaginador = rememberPagerState { listPirates.size }
+    val estatPaginador = rememberPagerState(initialPage=initialPage) { listPirates.size }
     Column(modifier=Modifier
         .padding(innerPadding)
         .fillMaxSize()

@@ -115,7 +115,6 @@ fun detallFF(index: Int) {
                         contentDescription = null,
                         modifier = Modifier
                             .height(50.dp)
-                            .weight(1f)
                             .align(Alignment.CenterVertically)
 
                     )

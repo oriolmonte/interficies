@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import cat.oriol.drawernavegacio.ui.AppDrawer
 import cat.oriol.drawernavegacio.ui.AppPager
+import cat.oriol.drawernavegacio.ui.AppRail
 import cat.oriol.drawernavegacio.ui.theme.DrawerNavegacioTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             DrawerNavegacioTheme {
                 //AppDrawer()
-                AppPager()
+                //AppPager()
+                AppRail()
             }
         }
     }

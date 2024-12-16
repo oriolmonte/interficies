@@ -51,6 +51,9 @@ dependencies {
     implementation ("androidx.navigation:navigation-compose:2.8.3")
     //Serialització
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    //trobar mida
+    implementation("androidx.compose.material3.adaptive:adaptive:1.0.0")
+
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.7.0")

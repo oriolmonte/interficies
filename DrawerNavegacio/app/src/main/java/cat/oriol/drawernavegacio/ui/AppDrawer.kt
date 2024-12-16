@@ -157,41 +157,7 @@ private fun Bastida(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        "Navegació amb drawer"
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
-                ),
-                navigationIcon = {
-                    if (destinacioActual?.hasRoute(CategoriaFinal::class)?: true ) {  // <-- Cal actualitzar aquesta condició a la ruta de la pantalla principal
-                        IconButton(
-                            onClick = {
-                                ambitCorrutina.launch {
-                                    estatDrawer.open()
-                                }
-                            }
-                        )
-                        {  Icon(imageVector = Icons.Default.Menu,contentDescription = "Pantalla principal",) }
-                    }
-                    else {
-                        IconButton(
-                            onClick = { controladorDeNavegacio.navigateUp() }
-                        ) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Navega enrera",
-                                tint = MaterialTheme.colorScheme.onPrimary
-                            )
-                        }
-                    }
-                }
-            )
+            BarraSuperior(destinacioActual, ambitCorrutina, estatDrawer, controladorDeNavegacio)
         },
 
         ) { innerPadding ->
@@ -200,4 +166,55 @@ private fun Bastida(
             paddingValues = innerPadding
         )
     }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun BarraSuperior(
+    destinacioActual: NavDestination?,
+    ambitCorrutina: CoroutineScope,
+    estatDrawer: DrawerState,
+    controladorDeNavegacio: NavHostController
+) {
+    TopAppBar(
+        title = {
+            Text(
+                "Navegació amb drawer"
+            )
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        navigationIcon = {
+            if (destinacioActual?.hasRoute(CategoriaFinal::class)
+                    ?: true
+            ) {  // <-- Cal actualitzar aquesta condició a la ruta de la pantalla principal
+                IconButton(
+                    onClick = {
+                        ambitCorrutina.launch {
+                            estatDrawer.open()
+                        }
+                    }
+                )
+                {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = "Pantalla principal",
+                    )
+                }
+            } else {
+                IconButton(
+                    onClick = { controladorDeNavegacio.navigateUp() }
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Navega enrera",
+                        tint = MaterialTheme.colorScheme.onPrimary
+                    )
+                }
+            }
+        }
+    )
 }

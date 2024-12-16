@@ -120,8 +120,9 @@ fun detallFF(index: Int) {
                         painter = painterResource(id = imageid),
                         contentDescription = null,
                         modifier = Modifier
-                            .aspectRatio(1f)
                             .height(50.dp)
+                            .align(Alignment.CenterVertically)
+
 
                     )
                 }
